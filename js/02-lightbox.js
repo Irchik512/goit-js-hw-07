@@ -1,11 +1,12 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 const galleryRef = document.querySelector(".gallery");
-const itemMarkup = document.createElement("li");
+
 const galleryMurkup = galleryItems
   .map((item) => {
     const { preview, original, description } = item;
     return `
+    <li class="gallery__item">
     <a class="gallery__link" href="${original}">
       <img
         class="gallery__image"
@@ -13,11 +14,11 @@ const galleryMurkup = galleryItems
         alt="${description}"
       />
     </a>
+  </li>
   `;
   })
   .join("");
-itemMarkup.insertAdjacentHTML("afterbegin", galleryMurkup);
-galleryRef.prepend(itemMarkup);
+galleryRef.insertAdjacentHTML("afterbegin", galleryMurkup);
 
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
